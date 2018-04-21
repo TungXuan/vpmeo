@@ -4,10 +4,9 @@ import uuid from 'uuid';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  email: {
-    type: String,
-    unique: true,
-  },
+  email: String,
+  facebookId: String,
+  facebookToken: String,
   firebaseId: String,
   fcmToken: String,
   phone: String,
