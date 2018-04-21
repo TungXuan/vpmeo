@@ -57,14 +57,11 @@ router.get('/profile', isLoggedIn, async (req, res) => {
   })
 });
 router.put('/me/fcmToken', isLoggedIn, updateFcmToken);
-<<<<<<< HEAD
 router.post('/trip/start', isLoggedIn, startTrip);
-=======
 // router.post('/notification', addUserNotification);
 router.get('/notifications', getUserNotifications);
 router.post('/transaction', isLoggedIn, createTransaction);
 router.get('/transactions', isLoggedIn, getUserTransactions);
 router.get('/transactions-by-types', isLoggedIn, getUserTransactionsByType);
->>>>>>> 7363530bee76d9ce6f5a7f284234a5bde126f8c6
 
 export default router;
