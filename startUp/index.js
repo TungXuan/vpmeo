@@ -1,3 +1,4 @@
+/* eslint-diable-file */
 import Item from '../models/item';
 import Tour from '../models/tour';
 import News from '../models/news';
@@ -7,33 +8,104 @@ export const initData = async () => {
   if (tourNumber === 0) {
     Tour.create([
       {
-        location: 'Ha noi',
-        days: 2,
-        schedule: [{
-          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
-          content: 'ngay 1',
-        }, {
-          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
-          content: 'ngay 2',
-        }],
+        location: 'Hà Nội',
+        days: 5,
+        schedule: [
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_ha_noi.png?alt=media&token=43569989-e1c5-4eb4-b812-8bd52e07d1bf',
+            content: 'Hôm nay trời nắng đẹp lắm',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_ha_noi_3.png?alt=media&token=c3669ff5-e2f0-4ce1-9271-25e16513a7e7',
+            content: 'Phở Hà Nội ngon quá ~~. Hôm nay còn được hoàn tiền 5% vì sử dụng thẻ credit VPBank StepUP ^ _ ^.',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_ha_noi_2.png?alt=media&token=fcf4ad3b-c0b1-4e86-b0b8-7c58e27d5bda',
+            content: 'Thời tiết như này không ra ngoài thì phí lắm',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_chung.png?alt=media&token=99668d3a-74cb-4789-b393-ae72dbf2c27e',
+            content: 'Chuẩn bị ít đồ quá không đi được nhiều tiếc thật T.T.Ước gì có nhiều cỏ hơn để mua thêm đồ, mình cần phải giao dịch qua ứng dụng của VPBank nhiều hơn nữa.',
+          },
+          {
+            imageimage: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_ha_noi.png?alt=media&token=43569989-e1c5-4eb4-b812-8bd52e07d1bf',
+            content: 'Ở đây nhiều góc sống ảo ha, cần mua điện thoại mới chụp đẹp hơn.Me0 sẽ sử dụng dịch vụ trả góp 0% của VPBank để mua máy chụp đẹp nhất.',
+          },
+        ],
         souvenirs: ['1', '2', '3'],
-        distance: 10,
+        distance: 20,
       },
       {
-        location: 'Ha Long',
-        days: 3,
-        schedule: [{
-          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
-          content: 'ngay 1',
-        }, {
-          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
-          content: 'ngay 2',
-        }, {
-          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
-          content: 'ngay 3',
-        }],
-        souvenirs: ['4', '5'],
-        distance: 200,
+        location: 'Sa Pa',
+        days: 4,
+        schedule: [
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_sapa.png?alt=media&token=61138d88-f1e1-4737-912d-3cc3e2875c01',
+            content: 'Đứng từ trên đây nhìn xuống đẹp thật',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_chung.png?alt=media&token=99668d3a-74cb-4789-b393-ae72dbf2c27e',
+            content: 'Thời tiết ở đây dễ chịu quá!!!',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_sapa_2.png?alt=media&token=88f67146-f309-4653-aa56-ac59e56d2299',
+            content: 'Cảnh đẹp ghê chưa, Không khí ở đây là tuyệt vời nhất và Đồ ăn ở đây quá ngon ~~~',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_sapa_3.png?alt=media&token=3576e4e0-0eac-469c-9f12-8365e38204c8',
+            content: 'Hôm nay bị ốm, đi khám ở bệnh viện thì nhận được ưu đãi vì sử dụng dịch vụ bảo hiểm của VPBank',
+          },
+        ],
+        souvenirs: ['1', '2', '3'],
+        distance: 30,
+      },
+      {
+        location: 'Huế',
+        days: 4,
+        schedule: [
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_hue.png?alt=media&token=942fd865-199b-454e-823b-4e2c3b9d11f9',
+            content: 'Bún bò Huế quá tuyệt',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_hue_2.png?alt=media&token=14550d9c-0d2a-43af-8bf3-da49b9300434',
+            content: 'Đẹp ghê chưaaa',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_nha_trang_3.png?alt=media&token=7d4ecce7-434f-4b5d-94d9-d03838dbda07',
+            content: 'Vất vả lắm mới tìm được chỗ đẹp như này đấy',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_chung.png?alt=media&token=99668d3a-74cb-4789-b393-ae72dbf2c27e',
+            content: 'Hôm nay con đi được nhiều nơi chưa này.Hôm nay phải nộp tiền điện mà đang đi chơi không ở nhà, may mà có dịch vụ nộp tiền qua internet banking của VPBank, thật tiện lợi ^^',
+          },
+        ],
+        souvenirs: ['1', '2', '3'],
+        distance: 35,
+      },
+      {
+        location: 'Nha Trang',
+        days: 4,
+        schedule: [
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_nha_trang.png?alt=media&token=67184859-7290-4fb4-a52c-6887d2f83ff8',
+            content: 'Ở đây có nhiều bãi biển lắm này',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_chung.png?alt=media&token=99668d3a-74cb-4789-b393-ae72dbf2c27e',
+            content: 'Giá mà mang nhiều tiền để đi được nhiều nơi hơn',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_nha_trang_2.png?alt=media&token=27171f2c-e15a-4b67-9828-72c8f8d59f86',
+            content: 'Quên không mang bếp để nướng hải sản rồi : (. Nếu có thêm 100 điểm loyalty thì có thể ra VPBank đổi bếp rồi : (',
+          },
+          {
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_nha_trang_3.png?alt=media&token=7d4ecce7-434f-4b5d-94d9-d03838dbda07',
+            content: 'Cuộc đời nói chung là vui, chỉ thiếu mỗi em, nói chung là buồn',
+          },
+        ],
+        souvenirs: ['1', '2', '3'],
+        distance: 50,
       },
     ]);
   }
