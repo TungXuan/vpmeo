@@ -4,6 +4,7 @@ import User from '../models/user';
 import { addUserNotification }
   from '../controllers/notifications';
 import { updateBalance } from '../services/firebase';
+moment.locale('vi');
 
 const TransactionToBalance = {
   0: 20,
