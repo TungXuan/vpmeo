@@ -46,3 +46,23 @@ export const updateFcmToken = async (req, res) => {
     });
   }
 };
+
+export const addUser = async (req, res) => {
+  try {
+    const user = await new User( {
+      name: req.body.name,
+      email: req.body.email,
+      phone: req.body.phone,
+      // hasCreditCard: req.body.hasCreditCard,
+      // hasInternetBanking: req.body.hasInternetBanking, 
+      birthdate: birthdate,
+    });
+    await user.save();
+    res.json({
+      success: true,
+      data: user,
+    })
+  } catch (error) {
+    throw error;
+  }
+};
