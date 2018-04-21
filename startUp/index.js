@@ -1,5 +1,6 @@
 import Item from '../models/item';
 import Tour from '../models/tour';
+import News from '../models/news';
 
 export const initData = async () => {
   const tourNumber = await Tour.count();
@@ -75,6 +76,40 @@ export const initData = async () => {
       {
         code: 8,
         price: 10,
+      },
+    ]);
+  }
+
+  const newsNumber = await News.count();
+  if (newsNumber === 0) {
+    News.create([
+      {
+        title: 'News 1',
+        images: [
+          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
+          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+        ],
+      },
+      {
+        title: 'News 2',
+        images: [
+          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
+          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+        ],
+      },
+      {
+        title: 'News 3',
+        images: [
+          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
+          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+        ],
+      },
+      {
+        title: 'News 4',
+        images: [
+          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
+          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+        ],
       },
     ]);
   }

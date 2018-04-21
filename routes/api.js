@@ -10,6 +10,7 @@ import { buyItem } from '../controllers/items';
 import {
   createTransaction, getUserTransactions,
 } from '../controllers/transactions';
+import { getAllNews, readNews } from '../controllers/news';
 
 const isLoggedIn = (req, res, next) => {
   const token = req.query.token || req.body.token ||
@@ -63,5 +64,8 @@ router.get('/postcards', isLoggedIn, getPostcards);
 router.post('/me/item', isLoggedIn, buyItem);
 
 router.get('/me/friends', isLoggedIn, getUserFriend);
+
+router.get('/news', isLoggedIn, getAllNews);
+router.post('/news/read', isLoggedIn, readNews);
 
 export default router;
