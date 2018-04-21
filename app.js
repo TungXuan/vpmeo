@@ -20,7 +20,6 @@ const appPort = process.env.PORT;
 app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico'))); // eslint-disable-line
 app.use(express.static(path.join(__dirname, 'public'))); // eslint-disable-line
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));// eslint-disable-line
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({
   limit: '50mb',
