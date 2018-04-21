@@ -8,7 +8,9 @@ const agenda = new Agenda({ db: { address: 'mongodb://127.0.0.1/agenda' } });
 export const startTrip = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { items } = req.body;
+    const { item1, item2, item3 } = req.body;
+    const items = [item1, item2, item3];
+
     await User.update({
       _id: userId,
     }, {
@@ -34,6 +36,11 @@ export const startTrip = async (req, res) => {
     });
 
     await newTrip.save();
+    await User.update({ _id: userId }, {
+      $inc: {
+        totalTravel: tour.distance,
+      },
+    });
     for (let i = 0; i < tour.schedule.length; i++) {
       const notiTime = new Date(now.getTime() + ONE_DAY * (i + 1));
       agenda.schedule(notiTime, 'send postcard', {

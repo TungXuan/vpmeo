@@ -10,6 +10,10 @@ const tourSchema = new Schema({
     content: String,
   }],
   souvenirs: [String],
+  distance: {
+    type: Number,
+    default: 0,
+  },
 });
 
 export default mongoose.model('Tour', tourSchema);

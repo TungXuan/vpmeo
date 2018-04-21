@@ -25,6 +25,7 @@ export const createTransaction = async (req, res) => {
     const user = await User.findOne({ _id: req.user._id });
     const addedGameBalance = Number(TransactionToBalance[type]);
     user.balance = user.balance + addedGameBalance;
+    user.totalWeed = user.totalWeed + addedGameBalance;
     await user.save();
     transaction.addedGameBalance = addedGameBalance;
     await transaction.save();

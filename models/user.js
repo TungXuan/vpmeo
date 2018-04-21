@@ -12,6 +12,14 @@ const userSchema = new Schema({
   phone: String,
   name: String,
   birthdate: Date,
+  totalTravel: {
+    type: Number,
+    default: 0,
+  },
+  totalWeed: {
+    type: Number,
+    default: 0,
+  },
   hasCreditCard: {
     type: Boolean,
     default: false,

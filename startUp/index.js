@@ -9,28 +9,30 @@ export const initData = async () => {
         location: 'Ha noi',
         days: 2,
         schedule: [{
-          image: '1',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
           content: 'ngay 1',
         }, {
-          image: '2',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
           content: 'ngay 2',
         }],
         souvenirs: ['1', '2', '3'],
+        distance: 10,
       },
       {
         location: 'Ha Long',
         days: 3,
         schedule: [{
-          image: '1',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
           content: 'ngay 1',
         }, {
-          image: '2',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
           content: 'ngay 2',
         }, {
-          image: '3',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV-f0FvoRZRrznodPqVaxfM-Zlz1SFtpD0C3nEtXMJjWDhZqoi',
           content: 'ngay 3',
         }],
         souvenirs: ['4', '5'],
+        distance: 200,
       },
     ]);
   }

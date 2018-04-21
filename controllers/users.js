@@ -5,6 +5,7 @@ import Transaction from '../models/transaction';
 import { FB_API_URL } from '../constants';
 import { addUserNotification } from '../controllers/notifications';
 import { updateBalance } from '../services/firebase';
+import { getFriendList } from '../services/facebook';
 
 const getTransactionQuantity = async (user) => {
   const tranQuantity = {};
@@ -29,8 +30,12 @@ export const login = async (req, res) => {
         facebookId: userProfile.id,
         email: userProfile.email,
         gender: userProfile.gender,
+        facebookToken,
       });
       updateBalance(user._id, 0);
+      await user.save();
+    } else {
+      user.facebookToken = facebookToken;
       await user.save();
     }
     const accessToken = jwt.sign({
@@ -73,6 +78,8 @@ export const registyService = async (req, res) => {
     if (hasInternetBanking) {
       user.hasInternetBanking = hasInternetBanking;
       user.balance = user.balance + 50;
+      user.totalWeed = user.totalWeed + 50;
+
       addUserNotification({
         user: user._id,
         title: 'VPMeo',
@@ -84,6 +91,8 @@ export const registyService = async (req, res) => {
     if (hasCreditCard) {
       user.hasCreditCard = hasCreditCard;
       user.balance = user.balance + 50;
+      user.totalWeed = user.totalWeed + 50;
+
       addUserNotification({
         user: user._id,
         title: 'VPMeo',
@@ -97,6 +106,18 @@ export const registyService = async (req, res) => {
     res.json({
       success: true,
       user,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserFriend = async (req, res) => {
+  try {
+    const friends = await getFriendList(req.user._id);
+    res.json({
+      success: true,
+      friends,
     });
   } catch (error) {
     console.log(error);
