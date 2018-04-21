@@ -50,9 +50,37 @@ export const getUserTransactions = async (req, res) => {
   }
 };
 
-export const getUserTransactionsByType = (req, res) => {
+export const getUserTransactionsByType = async (req, res) => {
   try {
-    
+    let transactions = []
+    const type0 = await Transaction.count({type: 0, user: req.user._id})
+    transactions.push({
+      type0: type0
+    })
+    const type1 = await Transaction.count({type: 1, user: req.user._id})
+    transactions.push({
+      type1: type1
+    })
+    const type2 = await Transaction.count({type: 2, user: req.user._id})
+    transactions.push({
+      type2: type2
+    })
+    const type3 = await Transaction.count({type: 3, user: req.user._id})
+    transactions.push({
+      type3: type3
+    })
+    const type4 = await Transaction.count({type: 4, user: req.user._id})
+    transactions.push({
+      type4: type4
+    })
+    const type5 = await Transaction.count({type: 5, user: req.user._id})
+    transactions.push({
+      type5: type5
+    })
+    res.json({
+      success: true,
+      transactions,
+    })
   } catch (error) {
     throw error;
   }
