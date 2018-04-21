@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import User from '../models/user';
+import Trip from '../models/trip';
 import Transaction from '../models/transaction';
 import { FB_API_URL } from '../constants';
 import { addUserNotification } from '../controllers/notifications';
@@ -14,6 +15,24 @@ const getTransactionQuantity = async (user) => {
     tranQuantity[`type${type}`] = quantity;
   }
   return tranQuantity;
+};
+
+const getMeoStatus = async (user) => {
+  try {
+    const trip = await Trip.findOne({
+      user,
+      from: {
+        $lte: new Date(),
+      },
+      to: {
+        $gte: new Date(),
+      },
+    });
+    if (trip) return false;
+    return true;
+  } catch (error) {
+    return true;
+  }
 };
 
 export const login = async (req, res) => {
@@ -42,11 +61,13 @@ export const login = async (req, res) => {
       token: user.token,
     }, 'sceret', { expiresIn: 180 * 86400 });
     const tranQuantity = await getTransactionQuantity(user._id);
+    const atHome = await getMeoStatus(user._id);
     res.json({
       success: true,
       accessToken,
       user,
       tranQuantity,
+      atHome,
     });
   } catch (error) {
     console.log(error);
@@ -61,10 +82,13 @@ export const getUserProfile = async (req, res) => {
   try {
     const user = req.user;
     const tranQuantity = await getTransactionQuantity(user._id);
+    const atHome = await getMeoStatus(user._id);
+
     res.json({
       success: true,
       user: user,
       tranQuantity,
+      atHome,
     });
   } catch (error) {
     console.log(error);

@@ -28,33 +28,40 @@ export const startTrip = async (req, res) => {
       },
     });
     const now = new Date();
-    const newTrip = new Trip({
-      user: userId,
-      tour: tour._id,
-      from: now,
-      to: new Date(now.getTime() + tour.days * 86400000),
-    });
-
-    await newTrip.save();
-    await User.update({ _id: userId }, {
-      $inc: {
-        totalTravel: tour.distance,
-      },
-    });
-    for (let i = 0; i < tour.schedule.length; i++) {
-      const notiTime = new Date(now.getTime() + ONE_DAY * (i + 1));
-      agenda.schedule(notiTime, 'send postcard', {
+    if (!tour) {
+      res.json({
+        success: false,
+        message: 'Meo đã đi 1 vòng trái đất',
+      });
+    } else {
+      const newTrip = new Trip({
         user: userId,
-        trip: newTrip._id,
-        image: tour.schedule[i].image,
-        content: tour.schedule[i].content,
+        tour: tour._id,
+        from: now,
+        to: new Date(now.getTime() + tour.days * ONE_DAY),
+      });
+
+      await newTrip.save();
+      await User.update({ _id: userId }, {
+        $inc: {
+          totalTravel: tour.distance,
+        },
+      });
+      for (let i = 0; i < tour.schedule.length; i++) {
+        const notiTime = new Date(now.getTime() + ONE_DAY * (i + 1));
+        agenda.schedule(notiTime, 'send postcard', {
+          user: userId,
+          trip: newTrip._id,
+          image: tour.schedule[i].image,
+          content: tour.schedule[i].content,
+        });
+      }
+
+      res.json({
+        success: true,
+        trip: newTrip,
       });
     }
-
-    res.json({
-      success: true,
-      trip: newTrip,
-    });
   } catch (error) {
     console.log(error);
   }
