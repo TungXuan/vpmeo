@@ -9,8 +9,8 @@ export const CODE = {
 
   OBJECT_NOT_FOUND: 404,
   EXCEPTION_ERROR: 405,
-
 };
 
 export const DOMAIN = 'http://13.58.212.102:4000/';
+export const FB_API_URL = 'https://graph.facebook.com/v2.10/me';
 

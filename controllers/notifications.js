@@ -6,7 +6,6 @@ export const addUserNotification = async (req, res) => {
       user: req.body.userId,
       title: req.body.title,
       type: req.body.type,
-      broadcastNoti: req.body.broadcastNoti,
       data: req.body.data,
     });
     await noti.save();

@@ -2,7 +2,7 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import { login, updateFcmToken, addUser } from '../controllers/users';
-import { addUserNotification, getUserNotification } from '../controllers/notifications';
+import { addUserNotification, getUserNotifications } from '../controllers/notifications';
 
 const isLoggedIn = (req, res, next) => {
   const token = req.query.token || req.body.token ||
@@ -45,8 +45,7 @@ const router = express.Router();
 
 router.post('/login', login);
 router.put('/me/fcmToken', isLoggedIn, updateFcmToken);
-router.post('/user', addUser);
-router.post('/notifications', isLoggedIn, addUserNotification);
-router.get('/notifications', isLoggedIn, getUserNotification);
+router.post('/notification', addUserNotification);
+router.get('/notifications', getUserNotifications);
 
 export default router;

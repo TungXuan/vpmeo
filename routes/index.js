@@ -1,7 +1,7 @@
 import express from 'express';
-// import uploads from './uploads';
+import apis from './api';
 const routers = express();
 
-// routers.use('/uploads', uploads);
+routers.use('/api', apis);
 
 export default routers;

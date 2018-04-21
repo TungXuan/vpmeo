@@ -1,14 +1,22 @@
-import User from '../models/user';
 import jwt from 'jsonwebtoken';
+import axios from 'axios';
+import User from '../models/user';
+import { FB_API_URL } from '../constants';
 
 export const login = async (req, res) => {
-  const { email, facebookId } = req.body;
+  const { facebookToken } = req.body;
   try {
-    let user = await User.findOne({ email });
+    let userProfile = await axios.get(`${FB_API_URL}?fields=id,name,picture.type(normal),email,gender&access_token=${facebookToken}`); // eslint-disable-line
+    userProfile = userProfile.data;
+    let user = await User.findOne({ email: userProfile.email });
+
     if (!user) {
       user = new User({
-        email,
-        facebookId,
+        name: userProfile.name,
+        avatar: userProfile.picture.data.url,
+        facebookId: userProfile.id,
+        email: userProfile.email,
+        gender: userProfile.gender,
       });
       await user.save();
     }
@@ -21,6 +29,7 @@ export const login = async (req, res) => {
       user,
     });
   } catch (error) {
+    console.log(error);
     res.json({
       success: false,
       message: error.message,
@@ -47,22 +56,3 @@ export const updateFcmToken = async (req, res) => {
   }
 };
 
-export const addUser = async (req, res) => {
-  try {
-    const user = await new User( {
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone,
-      // hasCreditCard: req.body.hasCreditCard,
-      // hasInternetBanking: req.body.hasInternetBanking, 
-      birthdate: birthdate,
-    });
-    await user.save();
-    res.json({
-      success: true,
-      data: user,
-    })
-  } catch (error) {
-    throw error;
-  }
-};
