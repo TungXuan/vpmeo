@@ -138,7 +138,9 @@ export const registyService = async (req, res) => {
 
 export const getUserFriend = async (req, res) => {
   try {
-    const friends = await getFriendList(req.user._id);
+    const friendFbs = await getFriendList(req.user._id);
+    const friends = await User.find({ facebookId: { $in: friendFbs } })
+      .select('_id facebookId name totalTravel totalWeed hasCreditCard hasInternetBanking'); // eslint-disable-line
     res.json({
       success: true,
       friends,

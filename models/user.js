@@ -7,8 +7,6 @@ const userSchema = new Schema({
   email: String,
   facebookId: String,
   facebookToken: String,
-  firebaseId: String,
-  fcmToken: String,
   phone: String,
   name: String,
   birthdate: Date,

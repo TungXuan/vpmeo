@@ -25,7 +25,7 @@ export const getUserNotifications = async (req, res) => {
   try {
     const notificationList = await Notification.find({
       user: req.user._id,
-    });
+    }).sort('-createdAt');
     const notifications = notificationList.map((noti) => {
       return Object.assign(JSON.parse(JSON.stringify((noti))), {
         createdAtString: moment(noti.createdAt).fromNow(),
