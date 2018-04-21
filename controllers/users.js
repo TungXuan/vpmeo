@@ -1,14 +1,24 @@
-import User from '../models/user';
 import jwt from 'jsonwebtoken';
+import axios from 'axios';
+import User from '../models/user';
+import { FB_API_URL } from '../constants';
 
 export const login = async (req, res) => {
-  const { email, facebookId } = req.body;
+  const { facebookToken } = req.body;
   try {
-    let user = await User.findOne({ email });
+    let userProfile = await axios.get(`${FB_API_URL}
+      ?fields=id,name,picture.type(normal)
+      ,email,gender&access_token=${facebookToken}`);
+    userProfile = userProfile.data;
+    let user = await User.findOne({ facebookId: userProfile.id });
+
     if (!user) {
       user = new User({
-        email,
-        facebookId,
+        name: userProfile.name,
+        avatar: userProfile.picture.data.url,
+        facebookId: userProfile.id,
+        email: userProfile.email,
+        gender: userProfile.gender,
       });
       await user.save();
     }

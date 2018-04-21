@@ -25,7 +25,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  collection: [],
+  souvenirs: [],
   items: [],
   token: {
     type: String,
