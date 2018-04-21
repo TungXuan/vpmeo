@@ -18,9 +18,10 @@ export const createTransaction = async (req, res) => {
       type: type,
       user: req.body.user,
     });
-    const user = await User.findOne({ _id: req.body.user });
+    const user = await User.findOne({ _id: req.user._id });
     user.balance = user.balance + Number(TransactionToBalance[type])
     await user.save();
+    transaction.addedGameBalance = Number(TransactionToBalance[type]);
     await transaction.save();
     res.json({
       success: true,
@@ -33,7 +34,7 @@ export const createTransaction = async (req, res) => {
 
 export const getUserTransactions = async (req, res) => {
   try {
-    const transactionList = await Transaction.find({ user: req.query.user })
+    const transactionList = await Transaction.find({ user: req.user._id })
       .sort('-createdAt');
     const transactions = transactionList.map((tran) => {
       return Object.assign(JSON.parse(JSON.stringify((tran))), {
@@ -48,4 +49,12 @@ export const getUserTransactions = async (req, res) => {
     console.log(error);
   }
 };
+
+export const getUserTransactionsByType = (req, res) => {
+  try {
+    
+  } catch (error) {
+    throw error;
+  }
+}
 

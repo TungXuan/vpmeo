@@ -19,6 +19,9 @@ const transactionSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  addedGameBalance: {
+    type: Number
+  }
 });
 
 export default mongoose.model('Transaction', transactionSchema);

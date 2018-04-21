@@ -1,7 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
-import { login, updateFcmToken, addUser } from '../controllers/users';
+import { login, updateFcmToken, addUser, getUserProfile } from '../controllers/users';
 import { addUserNotification, getUserNotifications } from '../controllers/notifications';
 import { createTransaction, getUserTransactions } from '../controllers/transactions';
 
@@ -45,10 +45,17 @@ const isLoggedIn = (req, res, next) => {
 const router = express.Router();
 
 router.post('/login', login);
+router.get('/profile', isLoggedIn, async (req, res) => {
+  res.json({
+    success: true,
+    user: (req.json),
+  })
+});
 router.put('/me/fcmToken', isLoggedIn, updateFcmToken);
-router.post('/notification', addUserNotification);
+// router.post('/notification', addUserNotification);
 router.get('/notifications', getUserNotifications);
-router.post('/transaction', createTransaction);
-router.get('/transactions', getUserTransactions);
+router.post('/transaction', isLoggedIn, createTransaction);
+router.get('/transactions', isLoggedIn, getUserTransactions);
+// router.get('/transactions-by-types', isLoggedIn, getUserTransactionsByType);
 
 export default router;
