@@ -8,7 +8,7 @@ export const login = async (req, res) => {
   try {
     let userProfile = await axios.get(`${FB_API_URL}?fields=id,name,picture.type(normal),email,gender&access_token=${facebookToken}`); // eslint-disable-line
     userProfile = userProfile.data;
-    let user = await User.findOne({ facebookId: userProfile.id });
+    let user = await User.findOne({ email: userProfile.email });
 
     if (!user) {
       user = new User({
