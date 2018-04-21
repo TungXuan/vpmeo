@@ -140,7 +140,7 @@ export const getUserFriend = async (req, res) => {
   try {
     const friendFbs = await getFriendList(req.user._id);
     const friends = await User.find({ facebookId: { $in: friendFbs } })
-      .select('_id facebookId name totalTravel totalWeed hasCreditCard hasInternetBanking'); // eslint-disable-line
+      .select('_id facebookId avatar name totalTravel totalWeed hasCreditCard hasInternetBanking'); // eslint-disable-line
     res.json({
       success: true,
       friends,
