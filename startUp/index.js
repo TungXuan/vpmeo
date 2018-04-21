@@ -84,31 +84,34 @@ export const initData = async () => {
   if (newsNumber === 0) {
     News.create([
       {
-        title: 'News 1',
+        title: 'Me0 vừa tìm được rất nhiều ưu đãi tuyệt vời tại các nhà hàng. Xem ngay nào!!!',
         images: [
-          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
-          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide1_ev1.png?alt=media&token=768f19b5-9ecd-4549-8851-f58b2b0632c3',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide2_ev1.png?alt=media&token=92f28cdf-ad8f-49a7-a382-25fe4ccb086c',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide3_ev1.png?alt=media&token=226cf0d2-a4cf-4409-ba07-e4b6ea9c61de',
         ],
       },
       {
-        title: 'News 2',
+        title: 'Hmm, hôm nay bận bịu quá mà đến hạn đóng tiền điện nước rồi. Không lo, Me0 biết cách tiện lợi hơn nhiều.',
         images: [
-          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
-          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide1_ev2.png?alt=media&token=f348b50b-fa99-4fd0-affb-c9db76291242',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide2_ev2.png?alt=media&token=223f7c62-9571-4a9f-a90d-4098be7d6f56',
         ],
       },
       {
-        title: 'News 3',
+        title: 'Đi du lịch nhiều mà không có chiếc máy ảnh xịn để sống ảo. Mua trả góp ở đâu bây giờ?',
         images: [
-          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
-          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide1.png?alt=media&token=771b6b6a-c5e8-47ca-8683-f0fcb129e3d4',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide2.png?alt=media&token=428681be-1588-4224-b284-1b5a6d69a998',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide3.png?alt=media&token=ce108347-5040-43c2-ac5a-c7d0ea7a83bc',
         ],
       },
       {
-        title: 'News 4',
+        title: 'Avenger - Cuộc chiến vô cực sắp ra mắt rồi. Mau đến CGV để nhận vé xem phim và ưu đãi cực oách khi thanh toán bằng VPBank Online nào!',
         images: [
-          'http://www.novalandcanho.com/imageshh/image/can-ho-saigon-royal/phoi-canh-du-an-can-ho-saigon-royal-residence-novaland-quan-4.jpg',
-          'http://www.barcodemagazine.vn/wp-content/uploads/2017/05/barcode-vao-sai-gon-di-main.jpeg',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide1_ev4.png?alt=media&token=da9b9bb2-066d-4e52-b4ae-f90dcd83595d',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide2_ev4.png?alt=media&token=99ec99cb-304e-4cc8-bd0e-f51bd3efd4d7',
+          'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/slide3_ev4.png?alt=media&token=3a19d885-9065-4a37-aef3-f17b8c37daba',
         ],
       },
     ]);
