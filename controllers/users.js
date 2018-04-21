@@ -6,9 +6,7 @@ import { FB_API_URL } from '../constants';
 export const login = async (req, res) => {
   const { facebookToken } = req.body;
   try {
-    let userProfile = await axios.get(`${FB_API_URL}
-      ?fields=id,name,picture.type(normal)
-      ,email,gender&access_token=${facebookToken}`);
+    let userProfile = await axios.get(`${FB_API_URL}?fields=id,name,picture.type(normal),email,gender&access_token=${facebookToken}`); // eslint-disable-line
     userProfile = userProfile.data;
     let user = await User.findOne({ facebookId: userProfile.id });
 
@@ -31,6 +29,7 @@ export const login = async (req, res) => {
       user,
     });
   } catch (error) {
+    console.log(error);
     res.json({
       success: false,
       message: error.message,
