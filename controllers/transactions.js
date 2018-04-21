@@ -16,7 +16,7 @@ export const createTransaction = async (req, res) => {
     const type = req.body.type;
     const transaction = new Transaction({
       type: type,
-      user: req.body.user,
+      user: req.user,
     });
     const user = await User.findOne({ _id: req.user._id });
     user.balance = user.balance + Number(TransactionToBalance[type])

@@ -48,7 +48,7 @@ router.post('/login', login);
 router.get('/profile', isLoggedIn, async (req, res) => {
   res.json({
     success: true,
-    user: (req.json),
+    user: (req.user),
   })
 });
 router.put('/me/fcmToken', isLoggedIn, updateFcmToken);
