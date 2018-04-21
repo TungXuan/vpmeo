@@ -1,26 +1,29 @@
 import Notification from '../models/notification';
+import { updateNotification } from '../services/firebase';
 
-export const addUserNotification = async (req, res) => {
+export const addUserNotification = async (noti) => {
+  const { type, user, title, body, data } = noti;
   try {
     const noti = new Notification({
-      user: req.body.userId,
-      title: req.body.title,
-      type: req.body.type,
-      data: req.body.data,
+      user,
+      title,
+      type,
+      body,
+      data,
     });
     await noti.save();
-    res.json({
-      success: true,
-      noti,
-    });
+    await updateNotification(noti);
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
 
 export const getUserNotifications = async (req, res) => {
   try {
-    const notificationList = await Notification.find({ user: req.query.userId });
+    const notificationList = await Notification.find({
+      user: req.user._id,
+    });
     res.json({
       success: true,
       data: notificationList,

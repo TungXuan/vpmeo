@@ -1,6 +1,7 @@
 import moment from 'moment';
 import Transaction from '../models/transaction';
 import User from '../models/user';
+import { addUserNotification } from '../controllers/notifications';
 
 const TransactionToBalance = {
   0: 20,
@@ -9,7 +10,7 @@ const TransactionToBalance = {
   3: 30,
   4: 25,
   5: 25,
-}
+};
 
 export const createTransaction = async (req, res) => {
   try {
@@ -19,10 +20,23 @@ export const createTransaction = async (req, res) => {
       user: req.user,
     });
     const user = await User.findOne({ _id: req.user._id });
-    user.balance = user.balance + Number(TransactionToBalance[type])
+    const addedGameBalance = Number(TransactionToBalance[type]);
+    user.balance = user.balance + addedGameBalance;
     await user.save();
-    transaction.addedGameBalance = Number(TransactionToBalance[type]);
+    transaction.addedGameBalance = addedGameBalance;
     await transaction.save();
+    addUserNotification({
+      type: 'transaction',
+      user: req.user._id,
+      title: 'VPMeo',
+      body: `Bạn vừa thực hiện giao dịch và nhận được ${addedGameBalance}🍀`,
+      data: {
+        _id: transaction._id,
+        type,
+        addedGameBalance,
+        balance: transaction.balance,
+      },
+    });
     res.json({
       success: true,
       transaction,
@@ -52,37 +66,37 @@ export const getUserTransactions = async (req, res) => {
 
 export const getUserTransactionsByType = async (req, res) => {
   try {
-    let transactions = []
-    const type0 = await Transaction.count({type: 0, user: req.user._id})
+    const transactions = [];
+    const type0 = await Transaction.count({ type: 0, user: req.user._id });
     transactions.push({
-      type0: type0
-    })
-    const type1 = await Transaction.count({type: 1, user: req.user._id})
+      type0: type0,
+    });
+    const type1 = await Transaction.count({ type: 1, user: req.user._id });
     transactions.push({
-      type1: type1
-    })
-    const type2 = await Transaction.count({type: 2, user: req.user._id})
+      type1: type1,
+    });
+    const type2 = await Transaction.count({ type: 2, user: req.user._id });
     transactions.push({
-      type2: type2
-    })
-    const type3 = await Transaction.count({type: 3, user: req.user._id})
+      type2: type2,
+    });
+    const type3 = await Transaction.count({ type: 3, user: req.user._id });
     transactions.push({
-      type3: type3
-    })
-    const type4 = await Transaction.count({type: 4, user: req.user._id})
+      type3: type3,
+    });
+    const type4 = await Transaction.count({ type: 4, user: req.user._id });
     transactions.push({
-      type4: type4
-    })
-    const type5 = await Transaction.count({type: 5, user: req.user._id})
+      type4: type4,
+    });
+    const type5 = await Transaction.count({ type: 5, user: req.user._id });
     transactions.push({
-      type5: type5
-    })
+      type5: type5,
+    });
     res.json({
       success: true,
       transactions,
-    })
+    });
   } catch (error) {
     throw error;
   }
-}
+};
 

@@ -8,6 +8,7 @@ const notificationSchema = new Schema({
   },
   title: String,
   type: String,
+  body: String,
   status: {
     type: Number,
     default: 0,
