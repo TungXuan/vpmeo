@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import { login, updateFcmToken, addUser } from '../controllers/users';
 import { addUserNotification, getUserNotifications } from '../controllers/notifications';
+import { createTransaction, getUserTransactions } from '../controllers/transactions';
 
 const isLoggedIn = (req, res, next) => {
   const token = req.query.token || req.body.token ||
@@ -47,5 +48,7 @@ router.post('/login', login);
 router.put('/me/fcmToken', isLoggedIn, updateFcmToken);
 router.post('/notification', addUserNotification);
 router.get('/notifications', getUserNotifications);
+router.post('/transaction', createTransaction);
+router.get('/transactions', getUserTransactions);
 
 export default router;
