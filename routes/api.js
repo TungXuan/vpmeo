@@ -2,9 +2,10 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import { startTrip } from '../controllers/travellings';
-import { login, updateFcmToken,
-  getUserProfile, registyService } from '../controllers/users';
+import { login, getUserProfile, registyService } from '../controllers/users';
 import { getUserNotifications } from '../controllers/notifications';
+import { getPostcards } from '../controllers/postcards';
+import { buyItem } from '../controllers/items';
 import {
   createTransaction, getUserTransactions,
 } from '../controllers/transactions';
@@ -52,10 +53,12 @@ router.post('/login', login);
 router.get('/profile', isLoggedIn, getUserProfile);
 router.post('/me/services', isLoggedIn, registyService);
 
-router.get('/notifications', getUserNotifications);
+router.get('/notifications', isLoggedIn, getUserNotifications);
 router.post('/transaction', isLoggedIn, createTransaction);
 router.get('/transactions', isLoggedIn, getUserTransactions);
 
 router.post('/trip/start', isLoggedIn, startTrip);
+router.get('/postcards', isLoggedIn, getPostcards);
+router.post('/me/item', isLoggedIn, buyItem);
 
 export default router;

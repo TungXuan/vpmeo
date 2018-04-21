@@ -13,7 +13,9 @@ export const startTrip = async (req, res) => {
       _id: userId,
     }, {
       $pull: {
-        items,
+        items: {
+          $in: items,
+        },
       },
     });
     const trips = await Trip.find({ user: userId });

@@ -37,7 +37,44 @@ export const initData = async () => {
 
   const itemNumer = await Item.count();
   if (itemNumer === 0) {
-
+    Item.create([
+      {
+        code: 0,
+        price: 8,
+      },
+      {
+        code: 1,
+        price: 6,
+      },
+      {
+        code: 2,
+        price: 10,
+      },
+      {
+        code: 3,
+        price: 30,
+      },
+      {
+        code: 4,
+        price: 50,
+      },
+      {
+        code: 5,
+        price: 80,
+      },
+      {
+        code: 6,
+        price: 3,
+      },
+      {
+        code: 7,
+        price: 5,
+      },
+      {
+        code: 8,
+        price: 10,
+      },
+    ]);
   }
 };
 

@@ -1,5 +1,6 @@
 import User from '../models/user';
 import Item from '../models/item';
+import { updateBalance } from '../services/firebase';
 
 export const buyItem = async (req, res) => {
   const { body: { code }, user: { balance, items, _id } } = req;
@@ -29,6 +30,7 @@ export const buyItem = async (req, res) => {
           balance: item.price * -1,
         },
       }, { new: true });
+      updateBalance(user._id, user.balance);
       res.json({
         success: true,
         user,

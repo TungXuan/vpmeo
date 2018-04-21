@@ -1,5 +1,7 @@
+import moment from 'moment';
 import Notification from '../models/notification';
 import { updateNotification } from '../services/firebase';
+moment.locale('vi');
 
 export const addUserNotification = async (noti) => {
   const { type, user, title, body, data } = noti;
@@ -24,9 +26,14 @@ export const getUserNotifications = async (req, res) => {
     const notificationList = await Notification.find({
       user: req.user._id,
     });
+    const notifications = notificationList.map((noti) => {
+      return Object.assign(JSON.parse(JSON.stringify((noti))), {
+        createdAtString: moment(noti.createdAt).fromNow(),
+      });
+    });
     res.json({
       success: true,
-      data: notificationList,
+      notifications,
     });
   } catch (error) {
     throw error;

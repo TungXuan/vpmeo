@@ -25,7 +25,7 @@ const userSchema = new Schema({
     default: false,
   },
   souvenirs: [],
-  items: [],
+  items: [Number],
   token: {
     type: String,
     default: uuid.v4,

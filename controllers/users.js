@@ -4,6 +4,7 @@ import User from '../models/user';
 import Transaction from '../models/transaction';
 import { FB_API_URL } from '../constants';
 import { addUserNotification } from '../controllers/notifications';
+import { updateBalance } from '../services/firebase';
 
 const getTransactionQuantity = async (user) => {
   const tranQuantity = {};
@@ -29,6 +30,7 @@ export const login = async (req, res) => {
         email: userProfile.email,
         gender: userProfile.gender,
       });
+      updateBalance(user._id, 0);
       await user.save();
     }
     const accessToken = jwt.sign({
@@ -90,6 +92,7 @@ export const registyService = async (req, res) => {
         data: {},
       });
     }
+    updateBalance(user._id, user.balance);
     await user.save();
     res.json({
       success: true,

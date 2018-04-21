@@ -9,6 +9,7 @@ admin.initializeApp({
 
 const realTimeDB = admin.database();
 const userRef = realTimeDB.ref('/users');
+const balancesRef = realTimeDB.ref('/balances');
 
 export const updateNotification =
   async ({ _id, user, type, title, body, data }) => {
@@ -23,3 +24,10 @@ export const updateNotification =
       },
     });
   };
+
+export const updateBalance = async (user, balance) => {
+  const uRef = balancesRef.child(user.toString());
+  uRef.set({
+    balance,
+  });
+};
