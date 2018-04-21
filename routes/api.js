@@ -1,14 +1,11 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
-<<<<<<< HEAD
 import { login, updateFcmToken } from '../controllers/users';
 import { startTrip } from '../controllers/travellings';
-=======
 import { login, updateFcmToken, addUser, getUserProfile } from '../controllers/users';
 import { addUserNotification, getUserNotifications } from '../controllers/notifications';
 import { createTransaction, getUserTransactions, getUserTransactionsByType } from '../controllers/transactions';
->>>>>>> 7363530bee76d9ce6f5a7f284234a5bde126f8c6
 
 const isLoggedIn = (req, res, next) => {
   const token = req.query.token || req.body.token ||
@@ -54,7 +51,7 @@ router.get('/profile', isLoggedIn, async (req, res) => {
   res.json({
     success: true,
     user: (req.user),
-  })
+  });
 });
 router.put('/me/fcmToken', isLoggedIn, updateFcmToken);
 router.post('/trip/start', isLoggedIn, startTrip);
