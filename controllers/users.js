@@ -41,7 +41,6 @@ export const login = async (req, res) => {
     let userProfile = await axios.get(`${FB_API_URL}?fields=id,name,picture.type(normal),email,gender&access_token=${facebookToken}`); // eslint-disable-line
     userProfile = userProfile.data;
     let user = await User.findOne({ facebookId: userProfile.id });
-
     if (!user) {
       user = new User({
         name: userProfile.name,
@@ -55,6 +54,7 @@ export const login = async (req, res) => {
       await user.save();
     } else {
       user.facebookToken = facebookToken;
+      user.avatar = userProfile.picture.data.url;
       await user.save();
     }
     const accessToken = jwt.sign({
