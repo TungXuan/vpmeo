@@ -7,13 +7,29 @@ import path from 'path';
 import { Server } from 'http';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import Agenda from 'agenda';
 
 import { dbUrl } from './config';
 import routes from './routes';
+import { initData } from './startUp';
+import { sendPostcard } from './controllers/postcards';
+const agenda = new Agenda({ db: { address: 'mongodb://127.0.0.1/agenda' } });
+
+agenda.define('send postcard', async (job, done) => {
+  await sendPostcard(job.attrs.data);
+  done();
+});
+agenda.on('ready', () => {
+  agenda.start();
+});
 dotenv.config();
 
 export const app = express();
-mongoose.connect(dbUrl);
+mongoose.connect(dbUrl).then(() => {
+  initData();
+}, (err) => {
+  console.log(err);
+});
 
 const appPort = process.env.PORT;
 

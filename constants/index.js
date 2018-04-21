@@ -13,4 +13,4 @@ export const CODE = {
 
 export const DOMAIN = 'http://13.58.212.102:4000/';
 export const FB_API_URL = 'https://graph.facebook.com/v2.10/me';
-
+export const ONE_DAY = 10000;

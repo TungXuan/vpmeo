@@ -2,6 +2,7 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import { login, updateFcmToken } from '../controllers/users';
+import { startTrip } from '../controllers/travellings';
 
 const isLoggedIn = (req, res, next) => {
   const token = req.query.token || req.body.token ||
@@ -44,5 +45,6 @@ const router = express.Router();
 
 router.post('/login', login);
 router.put('/me/fcmToken', isLoggedIn, updateFcmToken);
+router.post('/trip/start', isLoggedIn, startTrip);
 
 export default router;
