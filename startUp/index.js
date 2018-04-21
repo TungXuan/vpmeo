@@ -28,7 +28,7 @@ export const initData = async () => {
             content: 'Chuẩn bị ít đồ quá không đi được nhiều tiếc thật T.T.Ước gì có nhiều cỏ hơn để mua thêm đồ, mình cần phải giao dịch qua ứng dụng của VPBank nhiều hơn nữa.',
           },
           {
-            imageimage: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_ha_noi.png?alt=media&token=43569989-e1c5-4eb4-b812-8bd52e07d1bf',
+            image: 'https://firebasestorage.googleapis.com/v0/b/blm-vpmeo.appspot.com/o/locations%2Fimg_ha_noi.png?alt=media&token=43569989-e1c5-4eb4-b812-8bd52e07d1bf',
             content: 'Ở đây nhiều góc sống ảo ha, cần mua điện thoại mới chụp đẹp hơn.Me0 sẽ sử dụng dịch vụ trả góp 0% của VPBank để mua máy chụp đẹp nhất.',
           },
         ],
